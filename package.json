@@ -1,0 +1,25 @@
+{
+  "name": "deep-keys",
+  "version": "1.0.0",
+  "description": "A module with utility funciton for a javascript object",
+  "keywords": [
+    "nodejs",
+    "object"
+  ],
+  "author": {
+    "name": "Aditya Hegde",
+    "email": "adityahegderocks@gmail.com",
+    "url": "http://www.openshift.com/"
+  },
+  "homepage": "http://www.openshift.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AdityaHegde/deep-keys"
+  },
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
+  "dependencies" : {
+  }
+}
