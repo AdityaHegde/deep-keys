@@ -1,6 +1,6 @@
 {
   "name": "deep-keys-lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A module with utility funciton for a javascript object",
   "keywords": [
     "nodejs",
