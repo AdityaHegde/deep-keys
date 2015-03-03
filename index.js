@@ -47,7 +47,10 @@ _diff = function(srcObj, tarObj, meta) {
       for(var k in tarObj) {
         meta.hierarchy.push(k);
         meta.hierarchyActual.push(k);
-        var d = _diff(srcObj[k], tarObj[k], meta);
+        var d = undefined;
+        if(!meta.ignoreKeys[meta.hierarchy.join(".")]) {
+          d = _diff(srcObj[k], tarObj[k], meta);
+        }
         meta.hierarchyActual.pop();
         meta.hierarchy.pop();
         if(d !== undefined) {
@@ -64,7 +67,10 @@ _diff = function(srcObj, tarObj, meta) {
       for(var i = 0; i < tarObj.length; i++) {
         meta.hierarchy.push("@");
         meta.hierarchyActual.push(i);
-        var d = _diff(srcObj[i], tarObj[i], meta);
+        var d = undefined;
+        if(!meta.ignoreKeys[meta.hierarchy.join(".")]) {
+          d = _diff(srcObj[i], tarObj[i], meta);
+        }
         meta.hierarchyActual.pop();
         meta.hierarchy.pop();
         diffObj.push(d);

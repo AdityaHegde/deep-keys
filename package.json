@@ -1,5 +1,5 @@
 {
-  "name": "deep-keys",
+  "name": "deep-keys-lib",
   "version": "1.0.0",
   "description": "A module with utility funciton for a javascript object",
   "keywords": [
