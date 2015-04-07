@@ -1,6 +1,6 @@
 var
 assert = require("assert"),
-replaceKeys = require("../lib/replaceKeys"),
+deepKeys = require("../index"),
 
 tests = [{
   obj    : "*<a>*",
@@ -29,7 +29,7 @@ describe("replaceKeys", function() {
     (function() {
       var test = tests[i];
       it(test.title, function() {
-        var res = replaceKeys(test.obj, test.params);
+        var res = deepKeys.replaceKeys(test.obj, test.params);
         assert.deepEqual(res, test.res);
       });
     })();

@@ -1,6 +1,6 @@
 var
 assert = require("assert"),
-diff = require("../lib/diff"),
+deepKeys = require("../index"),
 
 tests = [{
   src   : {a : 1, b : 1},
@@ -45,7 +45,7 @@ describe("diff", function() {
     (function() {
       var test = tests[i];
       it(test.title, function() {
-        var d = diff(test.src, test.tar, test.ignoreKeys);
+        var d = deepKeys.diff(test.src, test.tar, test.ignoreKeys);
         assert.deepEqual(d, test.diff);
       });
     })();

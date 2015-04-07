@@ -1,10 +1,13 @@
-var 
-typeOf = require("./typeOf"),
-getValue = require("./getValue"),
+define([
+  "./getValue",
+  "./typeOf",
+], function(getValue, typeOf) {
+typeOf = typeOf.typeOf;
+getValue = getValue.getValue;
 
 
 //replace <key> in obj with value at that key from params
-replaceKeys = function(obj, params) {
+var replaceKeys = function(obj, params) {
   if(typeOf(obj) === "object" || typeOf(obj) === "array") {
     for(var k in obj) {
       obj[k] = replaceKeys(obj[k], params);
@@ -22,4 +25,8 @@ replaceKeys = function(obj, params) {
   return obj;
 };
 
-module.exports = replaceKeys;
+return {
+  replaceKeys : replaceKeys,
+};
+
+});

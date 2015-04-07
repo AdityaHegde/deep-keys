@@ -2,4 +2,7 @@ tests
 node_modules
 npm-debug.log
 coverage
+coverage-nodejs
+dist
+src
 .travis.yml

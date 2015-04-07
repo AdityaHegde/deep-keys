@@ -1,6 +1,6 @@
 var
 assert = require("assert"),
-assignValue = require("../lib/assignValue"),
+deepKeys = require("../index"),
 
 tests = [{
   obj : {},
@@ -39,7 +39,7 @@ describe("assignValue", function() {
     (function() {
       var test = tests[i];
       it(test.title + " : " + test.key, function() {
-        assignValue(test.obj, test.key, test.val);
+        deepKeys.assignValue(test.obj, test.key, test.val);
         assert.deepEqual(test.obj, test.res);
       });
     })();

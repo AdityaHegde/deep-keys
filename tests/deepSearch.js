@@ -1,6 +1,6 @@
 var
 assert = require("assert"),
-deepSearch = require("../lib/deepSearch"),
+deepKeys = require("../index"),
 
 obj = {
   a : 1,
@@ -92,7 +92,7 @@ describe("deepSearch", function() {
     (function() {
       var test = tests[i];
       it(test.title + " : " + test.key, function() {
-        var res = deepSearch(test.obj, test.key);
+        var res = deepKeys.deepSearch(test.obj, test.key);
         assert.deepEqual(res, test.res);
       });
     })();
@@ -102,7 +102,7 @@ describe("deepSearch", function() {
     (function() {
       var test = insertTests[i];
       it(test.title + " : " + test.key, function() {
-        var res = deepSearch(test.obj, test.key, 1);
+        var res = deepKeys.deepSearch(test.obj, test.key, 1);
         assert.deepEqual(res, test.res);
         assert.deepEqual(test.obj, test.resObj);
       });

@@ -1,5 +1,7 @@
-var 
-typeOf = require("./typeOf"),
+define([
+  "./typeOf",
+], function(typeOf) {
+typeOf = typeOf.typeOf;
 
 //private method
 //the actual method that calculates diff
@@ -7,7 +9,7 @@ typeOf = require("./typeOf"),
 //  ignoreKeys : {},
 //  hierarchy : [],
 //  hierarchyActual : [],
-_diff = function(srcObj, tarObj, meta) {
+var _diff = function(srcObj, tarObj, meta) {
   var
   diffObj,
   hasDiff = 0,
@@ -67,10 +69,14 @@ _diff = function(srcObj, tarObj, meta) {
 
 // Method to calculate diff of 2 javascript objects. It only gives the additional data on tarObj over srcObj.
 // Also accepts a deepKey representation (a : {b : 1} => a.b) of keys to ignore.
-module.exports = function(srcObj, tarObj, ignoreKeys) {
-  return _diff(srcObj, tarObj, {
-    ignoreKeys : ignoreKeys,
-    hierarchy  : [],
-    hierarchyActual : [],
-  });
+return {
+  diff : function(srcObj, tarObj, ignoreKeys) {
+    return _diff(srcObj, tarObj, {
+      ignoreKeys : ignoreKeys,
+      hierarchy  : [],
+      hierarchyActual : [],
+    });
+  },
 };
+
+});

@@ -1,6 +1,6 @@
 var
 assert = require("assert"),
-getValue = require("../lib/getValue"),
+deepKeys = require("../index"),
 
 obj = {
   a : 1,
@@ -60,7 +60,7 @@ describe("getValue", function() {
     (function() {
       var test = tests[i];
       it(test.title + " : " + test.key, function() {
-        var res = getValue(test.obj, test.key);
+        var res = deepKeys.getValue(test.obj, test.key);
         assert.deepEqual(res, test.res);
       });
     })();

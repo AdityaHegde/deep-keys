@@ -1,6 +1,6 @@
 var
 assert = require("assert"),
-deleteKey = require("../lib/deleteKey"),
+deepKeys = require("../index"),
 
 tests = [{
   obj : {a : 1},
@@ -29,7 +29,7 @@ describe("deleteKey", function() {
     (function() {
       var test = tests[i];
       it(test.title + " : " + test.key, function() {
-        deleteKey(test.obj, test.key, test.val);
+        deepKeys.deleteKey(test.obj, test.key, test.val);
         assert.deepEqual(test.obj, test.res);
       });
     })();

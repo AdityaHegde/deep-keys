@@ -1,0 +1,11 @@
+default:
+  - 'requirejs'
+  - 'concat'
+  - 'mocha_istanbul'
+  - 'uglify'
+  - 'yuidoc'
+  - 'clean'
+
+deploy:
+  - 'default'
+  - 'coveralls'

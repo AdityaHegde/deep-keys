@@ -1,6 +1,6 @@
 var
 assert = require("assert"),
-exists = require("../lib/exists"),
+deepKeys = require("../index"),
 
 tests = [{
   obj : {a : 1},
@@ -39,7 +39,7 @@ describe("exists", function() {
     (function() {
       var test = tests[i];
       it(test.title + " : " + test.key, function() {
-        var res = exists(test.obj, test.key);
+        var res = deepKeys.exists(test.obj, test.key);
         assert.equal(res, test.res);
       });
     })();
