@@ -1,22 +1,31 @@
 define([
   "./typeOf",
-  "./assignValue",
+  "./notNone",
   "./deepSearch",
+  "./assignValue",
   "./deleteKey",
   "./diff",
   "./exists",
   "./getValue",
   "./replaceKeys",
+  "./hierarchy",
 ], function() {
 
-  var DeepKeys = {};
+  /**
+   * @module deep-keys-lib
+   */
+
+  /**
+   * @class DeepKeysLib
+   */
+  var DeepKeysLib = {};
 
   for(var i = 0; i < arguments.length; i++) {
     for(var k in arguments[i]) {
-      DeepKeys[k] = arguments[i][k];
+      DeepKeysLib[k] = arguments[i][k];
     }
   }
 
-  return DeepKeys;
+  return DeepKeysLib;
 
 });

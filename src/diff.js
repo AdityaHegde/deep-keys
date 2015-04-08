@@ -1,33 +1,28 @@
 define([
   "./typeOf",
-], function(typeOf) {
+  "./hierarchy",
+], function(typeOf, HierarchyManager) {
 typeOf = typeOf.typeOf;
 
 //private method
 //the actual method that calculates diff
 //meta : {
 //  ignoreKeys : {},
-//  hierarchy : [],
-//  hierarchyActual : [],
+//  hierarchy  : instance of HierarchyManager,
 var _diff = function(srcObj, tarObj, meta) {
   var
   diffObj,
-  hasDiff = 0,
-  fullKey = meta.hierarchy.join("."),
-  fullKeyActual = meta.hierarchyActual.join(".");
+  hasDiff = 0;
   if(typeOf(srcObj) === "object") {
-    //console.log("Object : " + fullKeyActual);
     if(typeOf(tarObj) === "object") {
       diffObj = {};
       for(var k in tarObj) {
-        meta.hierarchy.push(k);
-        meta.hierarchyActual.push(k);
+        meta.hierarchy.pushToHierarchy(k);
         var d = undefined;
-        if(!meta.ignoreKeys[meta.hierarchy.join(".")]) {
+        if(!meta.ignoreKeys[meta.hierarchy.fullHierarchyStr]) {
           d = _diff(srcObj[k], tarObj[k], meta);
         }
-        meta.hierarchyActual.pop();
-        meta.hierarchy.pop();
+        meta.hierarchy.popFromHierarchy();
         if(d !== undefined) {
           diffObj[k] = d;
           hasDiff = 1;
@@ -36,18 +31,15 @@ var _diff = function(srcObj, tarObj, meta) {
     }
   }
   else if(typeOf(srcObj) === "array") {
-    //console.log("Array : " + fullKeyActual);
     if(typeOf(tarObj) === "array") {
       diffObj = [];
       for(var i = 0; i < tarObj.length; i++) {
-        meta.hierarchy.push("@");
-        meta.hierarchyActual.push(i);
+        meta.hierarchy.pushToHierarchy(i, "*");
         var d = undefined;
-        if(!meta.ignoreKeys[meta.hierarchy.join(".")]) {
+        if(!meta.ignoreKeys[meta.hierarchy.fullHierarchyStr]) {
           d = _diff(srcObj[i], tarObj[i], meta);
         }
-        meta.hierarchyActual.pop();
-        meta.hierarchy.pop();
+        meta.hierarchy.popFromHierarchy();
         diffObj.push(d);
         if(d !== undefined) {
           hasDiff = 1;
@@ -56,8 +48,7 @@ var _diff = function(srcObj, tarObj, meta) {
     }
   }
   else {
-    //console.log("Scalar : " + fullKeyActual);
-    if(!meta.ignoreKeys[fullKey]) {
+    if(!meta.ignoreKeys[meta.hierarchy.fullHierarchyStr]) {
       if(srcObj !== tarObj) {
         diffObj = tarObj;
         hasDiff = 1;
@@ -67,14 +58,24 @@ var _diff = function(srcObj, tarObj, meta) {
   return hasDiff === 1 ? diffObj : undefined;
 };
 
-// Method to calculate diff of 2 javascript objects. It only gives the additional data on tarObj over srcObj.
-// Also accepts a deepKey representation (a : {b : 1} => a.b) of keys to ignore.
+/**
+ * Method to calculate diff of 2 javascript objects. It only gives the additional data on tarObj over srcObj.
+ * Also accepts a deepKey representation (a : {b : 1} => a.b) of keys to ignore.
+ *
+ * @method diff
+ * @for DeepKeysLib
+ * @static
+ * @param srcObj {Object/Array} Source object/array.
+ * @param tarObj {Object/Array} Target object/array.
+ * @param ignoreKeys {Object} A map of deepKeys to ignore. Has support for * on arrays but not objects.
+ * @return {Object/Array} The diff object/array.
+ */
+//TODO : make this 2 way diff
 return {
   diff : function(srcObj, tarObj, ignoreKeys) {
     return _diff(srcObj, tarObj, {
       ignoreKeys : ignoreKeys,
-      hierarchy  : [],
-      hierarchyActual : [],
+      hierarchy  : new HierarchyManager.HierarchyManager(),
     });
   },
 };

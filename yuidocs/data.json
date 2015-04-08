@@ -3,9 +3,520 @@
         "name": "Deep Keys Lib",
         "description": "A utility module deep keys management - a.b.c"
     },
-    "files": {},
-    "modules": {},
-    "classes": {},
-    "classitems": [],
+    "files": {
+        "src/assignValue.js": {
+            "name": "src/assignValue.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "DeepKeysLib": 1
+            },
+            "namespaces": {}
+        },
+        "src/deep-keys-lib.js": {
+            "name": "src/deep-keys-lib.js",
+            "modules": {
+                "deep-keys-lib": 1
+            },
+            "classes": {
+                "DeepKeysLib": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/deepSearch.js": {
+            "name": "src/deepSearch.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "DeepKeysLib": 1
+            },
+            "namespaces": {}
+        },
+        "src/deleteKey.js": {
+            "name": "src/deleteKey.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "DeepKeysLib": 1
+            },
+            "namespaces": {}
+        },
+        "src/diff.js": {
+            "name": "src/diff.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "DeepKeysLib": 1
+            },
+            "namespaces": {}
+        },
+        "src/exists.js": {
+            "name": "src/exists.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/getValue.js": {
+            "name": "src/getValue.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "DeepKeysLib": 1
+            },
+            "namespaces": {}
+        },
+        "src/hierarchy.js": {
+            "name": "src/hierarchy.js",
+            "modules": {},
+            "classes": {
+                "DeepKeysLib.HierarchyManager": 1
+            },
+            "fors": {
+                "DeepKeysLib.HierarchyManager": 1
+            },
+            "namespaces": {}
+        },
+        "src/notNone.js": {
+            "name": "src/notNone.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "DeepKeysLib": 1
+            },
+            "namespaces": {}
+        },
+        "src/replaceKeys.js": {
+            "name": "src/replaceKeys.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "DeepKeysLib": 1
+            },
+            "namespaces": {}
+        },
+        "src/typeOf.js": {
+            "name": "src/typeOf.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "DeepKeysLib": 1
+            },
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "deep-keys-lib": {
+            "name": "deep-keys-lib",
+            "submodules": {},
+            "classes": {
+                "DeepKeysLib": 1,
+                "DeepKeysLib.HierarchyManager": 1
+            },
+            "fors": {
+                "DeepKeysLib": 1,
+                "DeepKeysLib.HierarchyManager": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/hierarchy.js",
+            "line": 3
+        }
+    },
+    "classes": {
+        "DeepKeysLib": {
+            "name": "DeepKeysLib",
+            "shortname": "DeepKeysLib",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "deep-keys-lib",
+            "file": "src/deep-keys-lib.js",
+            "line": 18
+        },
+        "DeepKeysLib.HierarchyManager": {
+            "name": "DeepKeysLib.HierarchyManager",
+            "shortname": "DeepKeysLib.HierarchyManager",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "deep-keys-lib",
+            "file": "src/hierarchy.js",
+            "line": 3,
+            "description": "A manager to handle key hierarchy",
+            "static": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/assignValue.js",
+            "line": 6,
+            "description": "Assign value at a deep location in an object/array.",
+            "itemtype": "method",
+            "name": "assignValue",
+            "static": 1,
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "Base object/array to assign to.",
+                    "type": "Object|Array"
+                },
+                {
+                    "name": "key",
+                    "description": "A deep key. Can have \"*\" at all positions except last. Eg: a.b.c, a.*.b",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "Value to assign at \"key\".",
+                    "type": "Any"
+                }
+            ],
+            "class": "DeepKeysLib"
+        },
+        {
+            "file": "src/deepSearch.js",
+            "line": 18,
+            "description": "Searches for the value of key. Returns array of matches.\nEach match has the object at last level, last key and value of the whole key.\nThe key can have \"*\" to search in all elements of array or all keys in an object.",
+            "itemtype": "method",
+            "name": "deepSearch",
+            "static": 1,
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "Object/Array to search in.",
+                    "type": "Object|Array"
+                },
+                {
+                    "name": "key",
+                    "description": "A deep key. Can have \"*\" at all positions except last. Eg: a.b.c, a.*.b",
+                    "type": "String"
+                },
+                {
+                    "name": "insert",
+                    "description": "To insert keys if not present or not.",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "Array of matches. Each match is an array [object at last level, last key, value of the whole key]. Returns null if no matches are found.",
+                "type": "Array"
+            },
+            "class": "DeepKeysLib",
+            "module": "deep-keys-lib"
+        },
+        {
+            "file": "src/deleteKey.js",
+            "line": 6,
+            "description": "Deletes a deep key from the last object(s)/array(s)",
+            "itemtype": "method",
+            "name": "deleteKey",
+            "static": 1,
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "Object/array to delete key from",
+                    "type": "Object|Array"
+                },
+                {
+                    "name": "key",
+                    "description": "A deep key. Can have \"*\" at all positions except last. Eg: a.b.c, a.*.b",
+                    "type": "String"
+                }
+            ],
+            "class": "DeepKeysLib",
+            "module": "deep-keys-lib"
+        },
+        {
+            "file": "src/diff.js",
+            "line": 61,
+            "description": "Method to calculate diff of 2 javascript objects. It only gives the additional data on tarObj over srcObj.\nAlso accepts a deepKey representation (a : {b : 1} => a.b) of keys to ignore.",
+            "itemtype": "method",
+            "name": "diff",
+            "static": 1,
+            "params": [
+                {
+                    "name": "srcObj",
+                    "description": "Source object/array.",
+                    "type": "Object/Array"
+                },
+                {
+                    "name": "tarObj",
+                    "description": "Target object/array.",
+                    "type": "Object/Array"
+                },
+                {
+                    "name": "ignoreKeys",
+                    "description": "A map of deepKeys to ignore. Has support for * on arrays but not objects.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "The diff object/array.",
+                "type": "Object/Array"
+            },
+            "class": "DeepKeysLib",
+            "module": "deep-keys-lib"
+        },
+        {
+            "file": "src/exists.js",
+            "line": 10,
+            "description": "Check whether any/all of values of deep key is present.",
+            "itemtype": "method",
+            "name": "exists",
+            "static": 1,
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "Object/array to check in.",
+                    "type": "Object|Array"
+                },
+                {
+                    "name": "key",
+                    "description": "A deep key. Can have \"*\" at all positions except last. Eg: a.b.c, a.*.b",
+                    "type": "String"
+                },
+                {
+                    "name": "or",
+                    "description": "Exists check should be or/and. Defaults to and.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "true/false based on presence of all/any values.",
+                "type": "Boolean"
+            },
+            "class": "DeepKeysLib",
+            "module": "deep-keys-lib"
+        },
+        {
+            "file": "src/getValue.js",
+            "line": 8,
+            "description": "Get values at a deep key. Returns all values as per key.",
+            "itemtype": "method",
+            "name": "getValue",
+            "static": 1,
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "Object/array to fetch values from.",
+                    "type": "Object/Array"
+                },
+                {
+                    "name": "key",
+                    "description": "A deep key. Can have \"*\" at all positions except last. Eg: a.b.c, a.*.b",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Array of values at \"key\". Returns null if no values are present.",
+                "type": "Array"
+            },
+            "class": "DeepKeysLib",
+            "module": "deep-keys-lib"
+        },
+        {
+            "file": "src/hierarchy.js",
+            "line": 10,
+            "description": "Current hierarchy of keys with actual key.",
+            "itemtype": "property",
+            "name": "hierarchy",
+            "type": "{Array}",
+            "readonly": "",
+            "class": "DeepKeysLib.HierarchyManager",
+            "module": "deep-keys-lib"
+        },
+        {
+            "file": "src/hierarchy.js",
+            "line": 20,
+            "description": "Current hierarchy of keys with placeholders.",
+            "itemtype": "property",
+            "name": "hierarchyPlaceholder",
+            "type": "{Array}",
+            "readonly": "",
+            "class": "DeepKeysLib.HierarchyManager",
+            "module": "deep-keys-lib"
+        },
+        {
+            "file": "src/hierarchy.js",
+            "line": 29,
+            "description": "Array of placeholders in order of its presence with indices.",
+            "itemtype": "property",
+            "name": "hierarchyPlaceholders",
+            "type": "{Array}",
+            "readonly": "",
+            "class": "DeepKeysLib.HierarchyManager",
+            "module": "deep-keys-lib"
+        },
+        {
+            "file": "src/hierarchy.js",
+            "line": 38,
+            "description": "String reprensentation of hierarchy joined with \".\" without the last key.",
+            "itemtype": "property",
+            "name": "hierarchyStr",
+            "type": "{String}",
+            "readonly": "",
+            "class": "DeepKeysLib.HierarchyManager",
+            "module": "deep-keys-lib"
+        },
+        {
+            "file": "src/hierarchy.js",
+            "line": 47,
+            "description": "String reprensentation of hierarchy with placeholders joined with \".\" without the last key.",
+            "itemtype": "property",
+            "name": "hierarchyPlaceholderStr",
+            "type": "{String}",
+            "readonly": "",
+            "class": "DeepKeysLib.HierarchyManager",
+            "module": "deep-keys-lib"
+        },
+        {
+            "file": "src/hierarchy.js",
+            "line": 56,
+            "description": "Full string reprensentation of hierarchy joined with \".\".",
+            "itemtype": "property",
+            "name": "fullHierarchyStr",
+            "type": "{String}",
+            "readonly": "",
+            "class": "DeepKeysLib.HierarchyManager",
+            "module": "deep-keys-lib"
+        },
+        {
+            "file": "src/hierarchy.js",
+            "line": 65,
+            "description": "Full string reprensentation of hierarchy with placeholders joined with \".\".",
+            "itemtype": "property",
+            "name": "fullHierarchyPlaceholderStr",
+            "type": "{String}",
+            "readonly": "",
+            "class": "DeepKeysLib.HierarchyManager",
+            "module": "deep-keys-lib"
+        },
+        {
+            "file": "src/hierarchy.js",
+            "line": 75,
+            "description": "Fills up all placeholders (\"*\") with actual value from current hierarchy.",
+            "itemtype": "method",
+            "name": "replacePlaceholders",
+            "params": [
+                {
+                    "name": "srcHierarchyPlaceholder",
+                    "description": "Hierarchy with placeholders to fill up.",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "Hierarchy of placeholders replaced with actual value from current hierarchy.",
+                "type": "Array"
+            },
+            "class": "DeepKeysLib.HierarchyManager",
+            "module": "deep-keys-lib"
+        },
+        {
+            "file": "src/hierarchy.js",
+            "line": 101,
+            "description": "Push a key and placeholder to hierarchy.",
+            "itemtype": "method",
+            "name": "pushToHierarchy",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "Key to add to hierarchy.",
+                    "type": "String"
+                },
+                {
+                    "name": "keyPlaceholder",
+                    "description": "Placeholder key. Defaults to value of key;",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "DeepKeysLib.HierarchyManager",
+            "module": "deep-keys-lib"
+        },
+        {
+            "file": "src/hierarchy.js",
+            "line": 127,
+            "description": "Pop key from hierarchy.",
+            "itemtype": "method",
+            "name": "popFromHierarchy",
+            "class": "DeepKeysLib.HierarchyManager",
+            "module": "deep-keys-lib"
+        },
+        {
+            "file": "src/notNone.js",
+            "line": 3,
+            "description": "Check if a value is not null and not undefined.",
+            "itemtype": "method",
+            "name": "notNone",
+            "static": 1,
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "DeepKeysLib",
+            "module": "deep-keys-lib"
+        },
+        {
+            "file": "src/replaceKeys.js",
+            "line": 10,
+            "description": "Replaces all instances of <key> in source object.\nIf obj is of object/array type then replaceKeys is called for each value/element respectively.\nFor any other value, <key> is replaced with value in the obj.",
+            "itemtype": "method",
+            "name": "replaceKeys",
+            "static": 1,
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "Object to replace in.",
+                    "type": "Any"
+                },
+                {
+                    "name": "params",
+                    "description": "Params to get value from for each <key>.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Value with <key> replaced.",
+                "type": "Any"
+            },
+            "class": "DeepKeysLib",
+            "module": "deep-keys-lib"
+        },
+        {
+            "file": "src/typeOf.js",
+            "line": 3,
+            "description": "Gets the absolute type.",
+            "itemtype": "method",
+            "name": "typeOf",
+            "static": 1,
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "type of obj",
+                "type": "String"
+            },
+            "class": "DeepKeysLib",
+            "module": "deep-keys-lib"
+        }
+    ],
     "warnings": []
 }

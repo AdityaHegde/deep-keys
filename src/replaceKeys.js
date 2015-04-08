@@ -1,12 +1,24 @@
 define([
   "./getValue",
   "./typeOf",
-], function(getValue, typeOf) {
+  "./notNone",
+], function(getValue, typeOf, notNone) {
 typeOf = typeOf.typeOf;
 getValue = getValue.getValue;
+notNone = notNone.notNone;
 
-
-//replace <key> in obj with value at that key from params
+/**
+ * Replaces all instances of <key> in source object.
+ * If obj is of object/array type then replaceKeys is called for each value/element respectively.
+ * For any other value, <key> is replaced with value in the obj.
+ *
+ * @method replaceKeys
+ * @for DeepKeysLib
+ * @static
+ * @param obj {any} Object to replace in.
+ * @param params {Object} Params to get value from for each <key>.
+ * @return {any} Value with <key> replaced.
+ */
 var replaceKeys = function(obj, params) {
   if(typeOf(obj) === "object" || typeOf(obj) === "array") {
     for(var k in obj) {
@@ -19,7 +31,9 @@ var replaceKeys = function(obj, params) {
       var
       val = getValue(params, parts[i].replace(/<(.*)>/, "$1")),
       regexp = new RegExp(parts[i].replace(/\./, "\\."));
-      obj = obj.replace(regexp, val);
+      if(val && notNone(val[0])) {
+        obj = obj.replace(regexp, val[0]);
+      }
     }
   }
   return obj;

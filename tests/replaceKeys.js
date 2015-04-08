@@ -8,6 +8,16 @@ tests = [{
   res    : "*1*",
   title  : "simple string",
 }, {
+  obj    : "*<b>*",
+  params : {a : 1},
+  res    : "*<b>*",
+  title  : "simple string key doesnt exists 1",
+}, {
+  obj    : "*<b.c>*",
+  params : {a : 1},
+  res    : "*<b.c>*",
+  title  : "simple string key doesnt exists 2",
+}, {
   obj    : {a : "*<a>*"},
   params : {a : 1},
   res    : {a : "*1*"},
