@@ -32,6 +32,19 @@ tests = [{
   val : 1,
   res : {a : [{b : 1}]},
   title : "deep key with array index, outer array not present",
+}, {
+  obj : {a : [{b : 1}, {}]},
+  key : "a.*.b",
+  val : 2,
+  res : {a : [{b : 2}, {b : 2}]},
+  title : "deep key with replacing existing",
+}, {
+  obj : {a : [{b : 1}, {}]},
+  key : "a.*.b",
+  val : 2,
+  dontReplace : true,
+  res : {a : [{b : 1}, {b : 2}]},
+  title : "deep key without replacing existing",
 }];
 
 describe("assignValue", function() {
@@ -39,7 +52,7 @@ describe("assignValue", function() {
     (function() {
       var test = tests[i];
       it(test.title + " : " + test.key, function() {
-        deepKeys.assignValue(test.obj, test.key, test.val);
+        deepKeys.assignValue(test.obj, test.key, test.val, test.dontReplace);
         assert.deepEqual(test.obj, test.res);
       });
     })();

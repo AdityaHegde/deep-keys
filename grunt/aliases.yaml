@@ -1,10 +1,15 @@
-default:
+build:
   - 'requirejs'
-  - 'concat'
+  - 'amdclean'
+  - 'umd'
+  - 'copy:nodejs'
+  - 'clean'
+
+default:
+  - 'build'
   - 'mocha_istanbul'
   - 'uglify'
   - 'yuidoc'
-  - 'clean'
 
 deploy:
   - 'default'

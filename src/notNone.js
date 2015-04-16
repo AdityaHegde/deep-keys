@@ -9,12 +9,8 @@ define(function() {
  * @param val {any}
  * @return {Boolean}
  */
-var notNone = function(val) {
+return function(val) {
   return null !== val && undefined !== val;
-};
-
-return {
-  notNone : notNone,
 };
 
 });

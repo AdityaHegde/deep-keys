@@ -9,7 +9,7 @@ define([
   "./getValue",
   "./replaceKeys",
   "./hierarchy",
-], function() {
+], function(typeOf, notNone, deepSearch, assignValue, deleteKey, diff, exists, getValue, replaceKeys, HierarchyManager) {
 
   /**
    * @module deep-keys-lib
@@ -18,13 +18,18 @@ define([
   /**
    * @class DeepKeysLib
    */
-  var DeepKeysLib = {};
-
-  for(var i = 0; i < arguments.length; i++) {
-    for(var k in arguments[i]) {
-      DeepKeysLib[k] = arguments[i][k];
-    }
-  }
+  var DeepKeysLib = {
+    typeOf           : typeOf,
+    notNone          : notNone,
+    deepSearch       : deepSearch,
+    assignValue      : assignValue,
+    deleteKey        : deleteKey,
+    diff             : diff,
+    exists           : exists,
+    getValue         : getValue,
+    replaceKeys      : replaceKeys,
+    HierarchyManager : HierarchyManager,
+  };
 
   return DeepKeysLib;
 

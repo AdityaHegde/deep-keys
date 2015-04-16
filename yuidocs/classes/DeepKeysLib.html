@@ -179,6 +179,12 @@
                 <li class="arg">
                         <code>value</code>
                 </li>
+                <li class="arg">
+                        <code class="optional">[dontReplace]</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[expandKeys]</code>
+                </li>
             </ul><span class="paren">)</span>
         </div>
 
@@ -193,7 +199,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/src_assignValue.js.html#l6"><code>src&#x2F;assignValue.js:6</code></a>
+        <a href="../files/src_assignValue.js.html#l5"><code>src&#x2F;assignValue.js:5</code></a>
         </p>
 
 
@@ -242,6 +248,30 @@
                     </div>
 
                 </li>
+                <li class="param">
+                        <code class="param-name optional">[dontReplace]</code>
+                        <span class="type">Boolean</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>Replace existing values or not. Defaults to false.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[expandKeys]</code>
+                        <span class="type">Array</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>Array of key maps for each * of objects in the key to use intead of all keys. Defaults to all.</p>
+
+                    </div>
+
+                </li>
             </ul>
         </div>
 
@@ -260,7 +290,10 @@
                         <code>key</code>
                 </li>
                 <li class="arg">
-                        <code>insert</code>
+                        <code class="optional">[insert]</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[expandKeys]</code>
                 </li>
             </ul><span class="paren">)</span>
         </div>
@@ -279,7 +312,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/src_deepSearch.js.html#l18"><code>src&#x2F;deepSearch.js:18</code></a>
+        <a href="../files/src_deepSearch.js.html#l16"><code>src&#x2F;deepSearch.js:16</code></a>
         </p>
 
 
@@ -320,12 +353,25 @@ The key can have &quot;*&quot; to search in all elements of array or all keys in
 
                 </li>
                 <li class="param">
-                        <code class="param-name">insert</code>
+                        <code class="param-name optional">[insert]</code>
                         <span class="type">Boolean</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
 
 
                     <div class="param-description">
-                        <p>To insert keys if not present or not.</p>
+                        <p>To insert keys if not present or not. Defaults to false.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[expandKeys]</code>
+                        <span class="type">Array</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>Array of key maps for each * of objects in the key to use intead of all keys. Defaults to all.</p>
 
                     </div>
 
@@ -356,6 +402,9 @@ The key can have &quot;*&quot; to search in all elements of array or all keys in
                 <li class="arg">
                         <code>key</code>
                 </li>
+                <li class="arg">
+                        <code class="optional">[expandKeys]</code>
+                </li>
             </ul><span class="paren">)</span>
         </div>
 
@@ -370,7 +419,7 @@ The key can have &quot;*&quot; to search in all elements of array or all keys in
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/src_deleteKey.js.html#l6"><code>src&#x2F;deleteKey.js:6</code></a>
+        <a href="../files/src_deleteKey.js.html#l5"><code>src&#x2F;deleteKey.js:5</code></a>
         </p>
 
 
@@ -404,6 +453,18 @@ The key can have &quot;*&quot; to search in all elements of array or all keys in
 
                     <div class="param-description">
                         <p>A deep key. Can have &quot;<em>&quot; at all positions except last. Eg: a.b.c, a.</em>.b</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[expandKeys]</code>
+                        <span class="type">Array</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>Array of key maps for each * of objects in the key to use intead of all keys. Defaults to all.</p>
 
                     </div>
 
@@ -445,7 +506,7 @@ The key can have &quot;*&quot; to search in all elements of array or all keys in
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/src_diff.js.html#l61"><code>src&#x2F;diff.js:61</code></a>
+        <a href="../files/src_diff.js.html#l60"><code>src&#x2F;diff.js:60</code></a>
         </p>
 
 
@@ -524,6 +585,9 @@ Also accepts a deepKey representation (a : {b : 1} =&gt; a.b) of keys to ignore.
                 <li class="arg">
                         <code class="optional">[or]</code>
                 </li>
+                <li class="arg">
+                        <code class="optional">[expandKeys]</code>
+                </li>
             </ul><span class="paren">)</span>
         </div>
 
@@ -541,7 +605,7 @@ Also accepts a deepKey representation (a : {b : 1} =&gt; a.b) of keys to ignore.
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/src_exists.js.html#l10"><code>src&#x2F;exists.js:10</code></a>
+        <a href="../files/src_exists.js.html#l8"><code>src&#x2F;exists.js:8</code></a>
         </p>
 
 
@@ -591,6 +655,18 @@ Also accepts a deepKey representation (a : {b : 1} =&gt; a.b) of keys to ignore.
                     </div>
 
                 </li>
+                <li class="param">
+                        <code class="param-name optional">[expandKeys]</code>
+                        <span class="type">Array</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>Array of key maps for each * of objects in the key to use intead of all keys. Defaults to all.</p>
+
+                    </div>
+
+                </li>
             </ul>
         </div>
 
@@ -617,6 +693,9 @@ Also accepts a deepKey representation (a : {b : 1} =&gt; a.b) of keys to ignore.
                 <li class="arg">
                         <code>key</code>
                 </li>
+                <li class="arg">
+                        <code class="optional">[expandKeys]</code>
+                </li>
             </ul><span class="paren">)</span>
         </div>
 
@@ -634,7 +713,7 @@ Also accepts a deepKey representation (a : {b : 1} =&gt; a.b) of keys to ignore.
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/src_getValue.js.html#l8"><code>src&#x2F;getValue.js:8</code></a>
+        <a href="../files/src_getValue.js.html#l6"><code>src&#x2F;getValue.js:6</code></a>
         </p>
 
 
@@ -668,6 +747,18 @@ Also accepts a deepKey representation (a : {b : 1} =&gt; a.b) of keys to ignore.
 
                     <div class="param-description">
                         <p>A deep key. Can have &quot;<em>&quot; at all positions except last. Eg: a.b.c, a.</em>.b</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[expandKeys]</code>
+                        <span class="type">Array</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>Array of key maps for each * of objects in the key to use intead of all keys. Defaults to all.</p>
 
                     </div>
 
@@ -779,7 +870,7 @@ Also accepts a deepKey representation (a : {b : 1} =&gt; a.b) of keys to ignore.
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/src_replaceKeys.js.html#l10"><code>src&#x2F;replaceKeys.js:10</code></a>
+        <a href="../files/src_replaceKeys.js.html#l7"><code>src&#x2F;replaceKeys.js:7</code></a>
         </p>
 
 

@@ -3,9 +3,6 @@ define([
   "./typeOf",
   "./notNone",
 ], function(getValue, typeOf, notNone) {
-typeOf = typeOf.typeOf;
-getValue = getValue.getValue;
-notNone = notNone.notNone;
 
 /**
  * Replaces all instances of <key> in source object.
@@ -39,8 +36,6 @@ var replaceKeys = function(obj, params) {
   return obj;
 };
 
-return {
-  replaceKeys : replaceKeys,
-};
+return replaceKeys;
 
 });

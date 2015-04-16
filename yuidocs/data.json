@@ -155,7 +155,7 @@
     "classitems": [
         {
             "file": "src/assignValue.js",
-            "line": 6,
+            "line": 5,
             "description": "Assign value at a deep location in an object/array.",
             "itemtype": "method",
             "name": "assignValue",
@@ -175,13 +175,25 @@
                     "name": "value",
                     "description": "Value to assign at \"key\".",
                     "type": "Any"
+                },
+                {
+                    "name": "dontReplace",
+                    "description": "Replace existing values or not. Defaults to false.",
+                    "type": "Boolean",
+                    "optional": true
+                },
+                {
+                    "name": "expandKeys",
+                    "description": "Array of key maps for each * of objects in the key to use intead of all keys. Defaults to all.",
+                    "type": "Array",
+                    "optional": true
                 }
             ],
             "class": "DeepKeysLib"
         },
         {
             "file": "src/deepSearch.js",
-            "line": 18,
+            "line": 16,
             "description": "Searches for the value of key. Returns array of matches.\nEach match has the object at last level, last key and value of the whole key.\nThe key can have \"*\" to search in all elements of array or all keys in an object.",
             "itemtype": "method",
             "name": "deepSearch",
@@ -199,8 +211,15 @@
                 },
                 {
                     "name": "insert",
-                    "description": "To insert keys if not present or not.",
-                    "type": "Boolean"
+                    "description": "To insert keys if not present or not. Defaults to false.",
+                    "type": "Boolean",
+                    "optional": true
+                },
+                {
+                    "name": "expandKeys",
+                    "description": "Array of key maps for each * of objects in the key to use intead of all keys. Defaults to all.",
+                    "type": "Array",
+                    "optional": true
                 }
             ],
             "return": {
@@ -212,7 +231,7 @@
         },
         {
             "file": "src/deleteKey.js",
-            "line": 6,
+            "line": 5,
             "description": "Deletes a deep key from the last object(s)/array(s)",
             "itemtype": "method",
             "name": "deleteKey",
@@ -227,6 +246,12 @@
                     "name": "key",
                     "description": "A deep key. Can have \"*\" at all positions except last. Eg: a.b.c, a.*.b",
                     "type": "String"
+                },
+                {
+                    "name": "expandKeys",
+                    "description": "Array of key maps for each * of objects in the key to use intead of all keys. Defaults to all.",
+                    "type": "Array",
+                    "optional": true
                 }
             ],
             "class": "DeepKeysLib",
@@ -234,7 +259,7 @@
         },
         {
             "file": "src/diff.js",
-            "line": 61,
+            "line": 60,
             "description": "Method to calculate diff of 2 javascript objects. It only gives the additional data on tarObj over srcObj.\nAlso accepts a deepKey representation (a : {b : 1} => a.b) of keys to ignore.",
             "itemtype": "method",
             "name": "diff",
@@ -265,7 +290,7 @@
         },
         {
             "file": "src/exists.js",
-            "line": 10,
+            "line": 8,
             "description": "Check whether any/all of values of deep key is present.",
             "itemtype": "method",
             "name": "exists",
@@ -286,6 +311,12 @@
                     "description": "Exists check should be or/and. Defaults to and.",
                     "type": "Boolean",
                     "optional": true
+                },
+                {
+                    "name": "expandKeys",
+                    "description": "Array of key maps for each * of objects in the key to use intead of all keys. Defaults to all.",
+                    "type": "Array",
+                    "optional": true
                 }
             ],
             "return": {
@@ -297,7 +328,7 @@
         },
         {
             "file": "src/getValue.js",
-            "line": 8,
+            "line": 6,
             "description": "Get values at a deep key. Returns all values as per key.",
             "itemtype": "method",
             "name": "getValue",
@@ -312,6 +343,12 @@
                     "name": "key",
                     "description": "A deep key. Can have \"*\" at all positions except last. Eg: a.b.c, a.*.b",
                     "type": "String"
+                },
+                {
+                    "name": "expandKeys",
+                    "description": "Array of key maps for each * of objects in the key to use intead of all keys. Defaults to all.",
+                    "type": "Array",
+                    "optional": true
                 }
             ],
             "return": {
@@ -472,7 +509,7 @@
         },
         {
             "file": "src/replaceKeys.js",
-            "line": 10,
+            "line": 7,
             "description": "Replaces all instances of <key> in source object.\nIf obj is of object/array type then replaceKeys is called for each value/element respectively.\nFor any other value, <key> is replaced with value in the obj.",
             "itemtype": "method",
             "name": "replaceKeys",

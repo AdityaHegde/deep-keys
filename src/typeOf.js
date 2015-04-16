@@ -9,10 +9,8 @@ define(function() {
  * @param obj {any}
  * @return {String} type of obj
  */
-return {
-  typeOf : function(obj) {
-    return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
-  },
+return function(obj) {
+  return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
 };
 
 });

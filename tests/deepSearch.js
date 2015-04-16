@@ -30,6 +30,41 @@ obj = {
       d : 3,
     },
   },
+  obj1 : {
+    a : [{
+      obj2 : {
+        i : 1,
+      },
+      obj3 : {
+        i : 2,
+      },
+    }, {
+      obj2 : {
+        i : 3,
+      },
+      obj4 : {
+        i : 4,
+      },
+    }],
+    b : [{
+      obj2 : {
+        i : 5,
+      },
+    }, {
+      obj4 : {
+        i : 6,
+      },
+    }],
+    c : [{
+      obj2 : {
+        i : 7,
+      },
+    }, {
+      obj4 : {
+        i : 8,
+      },
+    }],
+  },
 },
 
 tests = [{
@@ -110,6 +145,24 @@ tests = [{
   key : "i.*",
   res : null,
   title : "key with * at end"
+}, {
+  obj : obj,
+  key : "obj1.*.*.*.i",
+  res : [
+    [obj.obj1.a[0].obj2, "i", 1],
+    [obj.obj1.a[1].obj2, "i", 3],
+    [obj.obj1.a[1].obj4, "i", 4],
+    [obj.obj1.c[0].obj2, "i", 7],
+    [obj.obj1.c[1].obj4, "i", 8],
+  ],
+  expandKeys : [{
+    a : 1,
+    c : 1,
+  }, {
+    obj2 : 1,
+    obj4 : 1,
+  }],
+  title : "key with * on objects and arrays with expand keys"
 }],
 
 insertTests = [{
@@ -168,7 +221,7 @@ describe("deepSearch", function() {
     (function() {
       var test = tests[i];
       it(test.title + " : " + test.key, function() {
-        var res = deepKeys.deepSearch(test.obj, test.key);
+        var res = deepKeys.deepSearch(test.obj, test.key, false, test.expandKeys);
         assert.deepEqual(res, test.res);
       });
     })();
@@ -178,7 +231,7 @@ describe("deepSearch", function() {
     (function() {
       var test = insertTests[i];
       it(test.title + " : " + test.key, function() {
-        var res = deepKeys.deepSearch(test.obj, test.key, 1);
+        var res = deepKeys.deepSearch(test.obj, test.key, true);
         assert.deepEqual(res, test.res);
         assert.deepEqual(test.obj, test.resObj);
       });

@@ -1,4 +1,3 @@
-/* istanbul ignore next */
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD.

@@ -2,7 +2,6 @@ define([
   "./typeOf",
   "./hierarchy",
 ], function(typeOf, HierarchyManager) {
-typeOf = typeOf.typeOf;
 
 //private method
 //the actual method that calculates diff
@@ -71,13 +70,11 @@ var _diff = function(srcObj, tarObj, meta) {
  * @return {Object/Array} The diff object/array.
  */
 //TODO : make this 2 way diff
-return {
-  diff : function(srcObj, tarObj, ignoreKeys) {
-    return _diff(srcObj, tarObj, {
-      ignoreKeys : ignoreKeys,
-      hierarchy  : new HierarchyManager.HierarchyManager(),
-    });
-  },
+return function(srcObj, tarObj, ignoreKeys) {
+  return _diff(srcObj, tarObj, {
+    ignoreKeys : ignoreKeys,
+    hierarchy  : new HierarchyManager(),
+  });
 };
 
 });

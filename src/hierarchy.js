@@ -145,8 +145,6 @@ HierarchyManager.prototype.popFromHierarchy = function() {
   this.fullHierarchyPlaceholderStr = this.hierarchyPlaceholder.join(".");
 };
 
-return {
-  HierarchyManager : HierarchyManager
-};
+return HierarchyManager;
 
 });
