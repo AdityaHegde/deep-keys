@@ -1,6 +1,6 @@
 var
 assert = require("assert"),
-deepKeys = require("../index"),
+deepKeys = require("../deep-keys-lib"),
 
 tests = [{
   src   : {a : 1, b : 1},

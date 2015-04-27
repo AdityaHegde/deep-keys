@@ -1,8 +1,10 @@
 tests
+deep-keys-lib.min.js
 node_modules
 npm-debug.log
 coverage
-coverage-nodejs
-dist
+yuidocs
+grunt
+Gruntfile.js
 src
 .travis.yml

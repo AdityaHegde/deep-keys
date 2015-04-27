@@ -3,8 +3,6 @@ define([
   "./notNone",
 ], function(deepSearch, notNone) {
 
-//check whether a deep key exists
-//return value : true/false
 /**
  * Check whether any/all of values of deep key is present.
  *

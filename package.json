@@ -2,6 +2,7 @@
   "name": "deep-keys-lib",
   "version": "1.0.4",
   "description": "A module with utility funciton for a javascript object",
+  "main": "deep-keys-lib.js",
   "keywords": [
     "nodejs",
     "object"

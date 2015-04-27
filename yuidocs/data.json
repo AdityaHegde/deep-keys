@@ -290,7 +290,7 @@
         },
         {
             "file": "src/exists.js",
-            "line": 8,
+            "line": 6,
             "description": "Check whether any/all of values of deep key is present.",
             "itemtype": "method",
             "name": "exists",
