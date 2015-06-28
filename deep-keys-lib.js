@@ -152,6 +152,16 @@ hierarchy = HierarchyManager = function () {
     this.fullHierarchyStr = this.hierarchy.join('.');
     this.fullHierarchyPlaceholderStr = this.hierarchyPlaceholder.join('.');
   };
+  HierarchyManager.prototype.updateHierarchy = function (fullKey, fullPlaceholderKey) {
+    var keys = fullKey.split(/\./), placeholderKeys = fullPlaceholderKey.split(/\./), i, hlen = this.hierarchy.length;
+    for (i = 0; i < keys.length && i < hlen && this.hierarchy[i] === keys[i]; i++);
+    for (var j = i; j < hlen; j++) {
+      this.popFromHierarchy();
+    }
+    for (var j = i; j < keys.length; j++) {
+      this.pushToHierarchy(keys[j], placeholderKeys[j]);
+    }
+  };
   return HierarchyManager;
 }();
 diff = function () {

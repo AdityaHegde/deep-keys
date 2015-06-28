@@ -307,6 +307,71 @@ replacePlaceholdersTests = [{
   },
   srcHierarchyPlaceholder : ["a", "*", "b", "*"],
   output : ["a", "1", "b", "c"],
+}],
+
+updateHierarchy = [{
+  title : "updateHierarchy same key",
+  initKeys : ["a", "b", "c"],
+  initPlaceholderKeys : ["a", "b", "c"],
+  updateToKey : "a.b.c",
+  updateToPlaceholderKey : "a.b.c",
+  res : {
+    hierarchy                   : ["a", "b", "c"],
+    hierarchyPlaceholder        : ["a", "b", "c"],
+    hierarchyPlaceholders       : [],
+    hierarchyStr                : "a.b",
+    hierarchyPlaceholderStr     : "a.b",
+    fullHierarchyStr            : "a.b.c",
+    fullHierarchyPlaceholderStr : "a.b.c",
+  },
+}, {
+  title : "updateHierarchy with superset key",
+  initKeys : ["a", "b", "c"],
+  initPlaceholderKeys : ["a", "b", "c"],
+  updateToKey : "a.b",
+  updateToPlaceholderKey : "a.b.c",
+  res : {
+    hierarchy                   : ["a", "b"],
+    hierarchyPlaceholder        : ["a", "b"],
+    hierarchyPlaceholders       : [],
+    hierarchyStr                : "a",
+    hierarchyPlaceholderStr     : "a",
+    fullHierarchyStr            : "a.b",
+    fullHierarchyPlaceholderStr : "a.b",
+  },
+}, {
+  title : "updateHierarchy with a common subset",
+  initKeys : ["a", "b", "c"],
+  initPlaceholderKeys : ["a", "b", "c"],
+  updateToKey : "a.b.d",
+  updateToPlaceholderKey : "a.b.d",
+  res : {
+    hierarchy                   : ["a", "b", "d"],
+    hierarchyPlaceholder        : ["a", "b", "d"],
+    hierarchyPlaceholders       : [],
+    hierarchyStr                : "a.b",
+    hierarchyPlaceholderStr     : "a.b",
+    fullHierarchyStr            : "a.b.d",
+    fullHierarchyPlaceholderStr : "a.b.d",
+  },
+}, {
+  title : "updateHierarchy with array indixes",
+  initKeys : ["a", "1", "b"],
+  initPlaceholderKeys : ["a", "*", "b"],
+  updateToKey : "a.0.c",
+  updateToPlaceholderKey : "a.*.c",
+  res : {
+    hierarchy                   : ["a", "0", "c"],
+    hierarchyPlaceholder        : ["a", "*", "c"],
+    hierarchyPlaceholders       : [{
+      placeholder : "*",
+      index : 1,
+    }],
+    hierarchyStr                : "a.0",
+    hierarchyPlaceholderStr     : "a.*",
+    fullHierarchyStr            : "a.0.c",
+    fullHierarchyPlaceholderStr : "a.*.c",
+  },
 }];
 
 describe("HierarchyManager", function() {
@@ -333,6 +398,22 @@ describe("HierarchyManager", function() {
 
         var op = h.replacePlaceholders(test.srcHierarchyPlaceholder);
         assert.deepEqual(test.output, op);
+      });
+    })();
+  }
+
+  for(var i = 0; i < updateHierarchy.length; i++) {
+    (function() {
+      var test = updateHierarchy[i];
+      it(test.title, function() {
+        var h = new deepKeys.HierarchyManager();
+        for(var j = 0; j < test.initKeys.length; j++) {
+          h.pushToHierarchy(test.initKeys[j], test.initPlaceholderKeys[j]);
+        }
+
+        h.updateHierarchy(test.updateToKey, test.updateToPlaceholderKey);
+
+        assert.deepEqual(test.res, h);
       });
     })();
   }

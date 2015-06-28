@@ -124,6 +124,10 @@
                                 <a href="#method_replacePlaceholders">replacePlaceholders</a>
 
                             </li>
+                            <li class="index-item method">
+                                <a href="#method_updateHierarchy">updateHierarchy</a>
+
+                            </li>
                     </ul>
                 </div>
 
@@ -331,6 +335,78 @@
 
             </div>
         </div>
+
+
+</div>
+<div id="method_updateHierarchy" class="method item">
+    <h3 class="name"><code>updateHierarchy</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>fullKey</code>
+                </li>
+                <li class="arg">
+                        <code>fullPlaceholderKey</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_hierarchy.js.html#l148"><code>src&#x2F;hierarchy.js:148</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Update hierarchy with a full key.
+Eg,
+Cur key : $.a.b, update key : $.a, move to $.a by popping b
+Cur key : $.a.b, update key : $.a.b.c, move to $.a.b.c by pushing c
+Cur key : $.a.b, update key : $.a.c, move to $.a by popping b and pushing c</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">fullKey</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>Full key to update to.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">fullPlaceholderKey</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>Full placeholder key to update to.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
 
 
 </div>

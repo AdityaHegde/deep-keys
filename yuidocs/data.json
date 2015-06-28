@@ -487,6 +487,27 @@
             "module": "deep-keys-lib"
         },
         {
+            "file": "src/hierarchy.js",
+            "line": 148,
+            "description": "Update hierarchy with a full key.\nEg,\nCur key : $.a.b, update key : $.a, move to $.a by popping b\nCur key : $.a.b, update key : $.a.b.c, move to $.a.b.c by pushing c\nCur key : $.a.b, update key : $.a.c, move to $.a by popping b and pushing c",
+            "itemtype": "method",
+            "name": "updateHierarchy",
+            "params": [
+                {
+                    "name": "fullKey",
+                    "description": "Full key to update to.",
+                    "type": "String"
+                },
+                {
+                    "name": "fullPlaceholderKey",
+                    "description": "Full placeholder key to update to.",
+                    "type": "String"
+                }
+            ],
+            "class": "DeepKeysLib.HierarchyManager",
+            "module": "deep-keys-lib"
+        },
+        {
             "file": "src/notNone.js",
             "line": 3,
             "description": "Check if a value is not null and not undefined.",

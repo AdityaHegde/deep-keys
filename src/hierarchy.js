@@ -145,6 +145,34 @@ HierarchyManager.prototype.popFromHierarchy = function() {
   this.fullHierarchyPlaceholderStr = this.hierarchyPlaceholder.join(".");
 };
 
+/**
+ * Update hierarchy with a full key.
+ * Eg,
+ * Cur key : $.a.b, update key : $.a, move to $.a by popping b
+ * Cur key : $.a.b, update key : $.a.b.c, move to $.a.b.c by pushing c
+ * Cur key : $.a.b, update key : $.a.c, move to $.a by popping b and pushing c
+ *
+ * @method updateHierarchy
+ * @param fullKey {String} Full key to update to.
+ * @param fullPlaceholderKey {String} Full placeholder key to update to.
+ */
+HierarchyManager.prototype.updateHierarchy = function(fullKey, fullPlaceholderKey) {
+  var
+  keys = fullKey.split(/\./),
+  placeholderKeys = fullPlaceholderKey.split(/\./),
+  i, hlen = this.hierarchy.length;
+
+  for(i = 0; i < keys.length && i < hlen && this.hierarchy[i] === keys[i]; i++) ;
+
+  for(var j = i; j < hlen; j++) {
+    this.popFromHierarchy();
+  }
+
+  for(var j = i; j < keys.length; j++) {
+    this.pushToHierarchy(keys[j], placeholderKeys[j]);
+  }
+};
+
 return HierarchyManager;
 
 });
